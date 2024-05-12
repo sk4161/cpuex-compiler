@@ -8,7 +8,7 @@ This compiler is originated from https://github.com/esumii/min-caml.
 
 ## How to run
 
-This compiler generates assemblies of [a code for ray tracing](https://github.com/cpuex22-group8/compiler/tree/main/min-caml/minrt) written in the minimal subset of OCaml in the following procedure:
+This compiler generates assemblies of [a code for ray tracing](https://github.com/sk4161/cpuex-compiler/tree/main/min-caml/minrt) written in the minimal subset of OCaml in the following procedure:
 
 ```sh
 $ cd min-caml/
