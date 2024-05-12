@@ -1,21 +1,18 @@
-# compiler
+# cpuex-compiler
 
 ## Overview
 
-This is the repository for the compiler section of Group 8 of the 2022 CPU Experiment.
+This is a compiler for a minimal subset of OCaml.
+
+This compiler is originated from https://github.com/esumii/min-caml.
 
 ## How to run
 
-1. build (and generate the assembly of minrt automatically)
+This compiler generates assemblies of [a code for ray tracing](https://github.com/cpuex22-group8/compiler/tree/main/min-caml/minrt) written in the minimal subset of OCaml in the following procedure:
 
 ```sh
 $ cd min-caml/
 $ make
 ```
 
-2. generate the assembly of minrt manually
-
-```sh
-$ ./min-caml minrt/minrt_128
-$ ./min-caml minrt/minrt_256
-```
+The generated assemblies are `min-caml/minrt/minrt_128.s` (for 128 $\times$ 128) and `min-caml/minrt/minrt_256.s` (for 256 $\times$ 256).
