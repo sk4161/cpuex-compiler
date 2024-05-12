@@ -88,7 +88,7 @@ let rec sin_g a flag =
     else
         sin_h a flag
 in
-let rec sin_f a flag = 
+let rec sin_f a flag =
     if a >= 3.1415926535 then
         sin_g (a -. 3.1415926535) (fneg flag)
     else

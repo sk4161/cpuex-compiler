@@ -128,7 +128,7 @@ let rec g env = function (* K正規化ルーチン本体 *)
             let env' = M.add x t env in
             let e2', t2 = g env' e2 in
             if not (List.mem_assoc "nvector" yts) then
-                let e1', t1 = g (M.add_list yts env') e1 in 
+                let e1', t1 = g (M.add_list yts env') e1 in
                 LetRec({ name = (x, t); args = yts; body = e1' }, e2', p), t2
             else
                 let rec subst_nvector = function
@@ -217,13 +217,13 @@ let f e = fst (g M.empty e)
 (* output kNormal *)
 let rec print_kNormal outchan t d =
     match t with
-    | Unit _ -> 
+    | Unit _ ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" "UNIT\n"
-    | Int (x, _) -> 
+    | Int (x, _) ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" ("INT " ^ string_of_int x ^ "\n")
-    | Float (x, _) -> 
+    | Float (x, _) ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" ("FLOAT " ^ string_of_float x ^ "\n")
     | Neg (x, _) ->
@@ -337,17 +337,17 @@ let rec print_kNormal outchan t d =
         Printf.fprintf outchan "%s" "FABS ";
         Printf.fprintf outchan "%s\n" x
     | FSqrt (x, _) ->
-	    print_tab outchan d;
+        print_tab outchan d;
         Printf.fprintf outchan "%s" "FSQRT ";
         Printf.fprintf outchan "%s\n" x
     | FtoI (x, _) ->
-	    print_tab outchan d;
-	    Printf.fprintf outchan "%s" "FtoI ";
-	    Printf.fprintf outchan "%s\n" x
+        print_tab outchan d;
+        Printf.fprintf outchan "%s" "FtoI ";
+        Printf.fprintf outchan "%s\n" x
     | ItoF (x, _) ->
-	    print_tab outchan d;
-	    Printf.fprintf outchan "%s" "ItoF ";
-	    Printf.fprintf outchan "%s\n" x
+        print_tab outchan d;
+        Printf.fprintf outchan "%s" "ItoF ";
+        Printf.fprintf outchan "%s\n" x
 and print_id outchan x d =
     print_tab outchan d;
     Printf.fprintf outchan "%s\n" x
@@ -367,7 +367,7 @@ and print_id_type_list outchan t d =
         print_id_type outchan x d;
         Printf.fprintf outchan "%s" " ";
         print_id_type_list outchan xs d
-and print_tab outchan d = 
+and print_tab outchan d =
     if d = 0 then
         ()
     else

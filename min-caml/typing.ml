@@ -58,7 +58,7 @@ let rec occur r1 = function (* occur check *)
     | Type.Array(t2) -> occur r1 t2
     | Type.Var(r2) when r1 == r2 -> true
     | Type.Var({ contents = None }) -> false
-    | Type.Var({ contents = Some(t2) }) -> occur r1 t2 
+    | Type.Var({ contents = Some(t2) }) -> occur r1 t2
     | _ -> false
 
 let rec unify p t1 t2 = (* 型が合うように、型変数への代入をする *)
@@ -162,7 +162,7 @@ try
     | ItoF(e, p) ->
         unify p Type.Int (g env e);
         Type.Float
-  with
+    with
     | Unify(t1, t2, p) -> raise (Error(deref_term e, deref_typ t1, deref_typ t2, p))
     | Error(e, t1, t2, p) -> raise (Error(deref_term e, deref_typ t1, deref_typ t2, p))
 

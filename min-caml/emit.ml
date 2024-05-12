@@ -102,7 +102,7 @@ and g' oc p = function (* 各命令のアセンブリ生成 *)
     | NonTail(x), Mov(y) -> Printf.fprintf oc "\tadd %s x0 %s\t#%d\n" (regname x) (regname y) p
     | NonTail(x), Neg(y) -> Printf.fprintf oc "\tsub %s x0 %s\t#%d\n" (regname x) (regname y) p
     | NonTail(x), Add(y, z') ->
-    (match z' with 
+    (match z' with
     | V(_) -> Printf.fprintf oc "\tadd %s %s %s\t#%d\n" (regname x) (regname y) (pp_id_or_imm z') p
     | C(_) -> Printf.fprintf oc "\taddi %s %s %s\t#%d\n" (regname x) (regname y) (pp_id_or_imm z') p)
     | NonTail(x), Sub(y, z') ->
@@ -425,25 +425,6 @@ let f oc (Prog(data, fundefs, e)) =
     Printf.fprintf oc "\taddi %s x0 2048\t#%d\n" (regname reg_hp) 0; (* hp *)
     set_float "%x63" (label_from_float 1.0 data) oc 0;
     set_float "%x62" (label_from_float (-1.0) data) oc 0;
-    set_float "%x61" (label_from_float (3.1415926535 *. 2.0) data) oc 0;
-    set_float "%x60" (label_from_float 3.1415926535 data) oc 0;
-    set_float "%x59" (label_from_float (3.1415926535 /. 2.0) data) oc 0;
-    set_float "%x58" (label_from_float (-0.2) data) oc 0;
-    set_float "%x57" (label_from_float 0.01 data) oc 0;
-    set_float "%x56" (label_from_float (-0.1) data) oc 0;
-    set_float "%x55" (label_from_float 1000000000.0 data) oc 0;
-    set_float "%x54" (label_from_float 100000000.0 data) oc 0;
-    set_float "%x53" (label_from_float (-8388608.0) data) oc 0;
-    set_float "%x52" (label_from_float 8388608.0 data) oc 0;
-    set_float "%x51" (label_from_float 255.0 data) oc 0;
-    set_float "%x50" (label_from_float 0.05 data) oc 0;
-    set_float "%x49" (label_from_float 10.0 data) oc 0;
-    set_float "%x48" (label_from_float 20.0 data) oc 0;
-    set_float "%x47" (label_from_float (1.0 /. 256.0) data) oc 0;
-    set_float "%x46" (label_from_float (-2.0) data) oc 0;
-    set_float "%x45" (label_from_float 0.1 data) oc 0;
-    set_float "%x44" (label_from_float (-150.0) data) oc 0;
-    set_float "%x43" (label_from_float 150.0 data) oc 0;
     Printf.fprintf oc "\taddi x42 x0 1\t#%d\n" 0;
     Printf.fprintf oc "\taddi x41 x0 2\t#%d\n" 0;
     Printf.fprintf oc "\taddi x40 x0 3\t#%d\n" 0;

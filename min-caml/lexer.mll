@@ -114,9 +114,9 @@ rule token = parse
 | _
     { failwith
         (Printf.sprintf "unknown token %s near characters %d-%d"
-           (Lexing.lexeme lexbuf)
-           (Lexing.lexeme_start lexbuf)
-           (Lexing.lexeme_end lexbuf)) }
+            (Lexing.lexeme lexbuf)
+            (Lexing.lexeme_start lexbuf)
+            (Lexing.lexeme_end lexbuf)) }
 and comment = parse
 | line
     { Lexing.new_line lexbuf; comment lexbuf }

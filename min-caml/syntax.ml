@@ -35,16 +35,16 @@ and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 (* output syntax *)
 let rec print_syntax outchan t d =
     match t with
-    | Unit _ -> 
-        print_tab outchan d; 
+    | Unit _ ->
+        print_tab outchan d;
         Printf.fprintf outchan "UNIT\n"
-    | Bool (x, _) -> 
+    | Bool (x, _) ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" ("BOOL " ^ string_of_bool x ^ "\n")
-    | Int (x, _) -> 
+    | Int (x, _) ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" ("INT " ^ string_of_int x ^ "\n")
-    | Float (x, _) -> 
+    | Float (x, _) ->
         print_tab outchan d;
         Printf.fprintf outchan "%s" ("FLOAT " ^ string_of_float x ^ "\n")
     | Not (x, _) ->

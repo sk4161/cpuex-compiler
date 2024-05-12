@@ -351,7 +351,7 @@ and print_id_or_imm outchan d = function
 and print_id_type outchan (a, b) =
     Type.print_type outchan b;
     Printf.fprintf outchan "%s\n" a
-and print_tab outchan d = 
+and print_tab outchan d =
     if d = 0 then
         ()
     else

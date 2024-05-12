@@ -167,22 +167,22 @@ and g'_if dest cont regenv exp constr e1 e2 p = (* ifのレジスタ割り当て
         M.empty
         (fv cont) in
     (List.fold_left
-     (fun e x ->
-          if x = fst dest || not (M.mem x regenv) || M.mem x regenv' then e else
-          seq(Save(M.find x regenv, x), e, p)) (* そうでない変数は分岐直前にセーブ *)
-     (Ans(constr e1' e2', p))
-     (fv cont),
-     regenv')
+        (fun e x ->
+            if x = fst dest || not (M.mem x regenv) || M.mem x regenv' then e else
+                seq(Save(M.find x regenv, x), e, p)) (* そうでない変数は分岐直前にセーブ *)
+        (Ans(constr e1' e2', p))
+        (fv cont),
+        regenv')
 and g'_call dest cont regenv exp constr ys zs p = (* 関数呼び出しのレジスタ割り当て (caml2html: regalloc_call) *)
     (List.fold_left
-     (fun e x ->
-          if x = fst dest || not (M.mem x regenv) then e else
-          seq(Save(M.find x regenv, x), e, p))
-     (Ans(constr
+        (fun e x ->
+            if x = fst dest || not (M.mem x regenv) then e else
+            seq(Save(M.find x regenv, x), e, p))
+        (Ans(constr
             (List.map (fun y -> find y Type.Int regenv) ys)
             (List.map (fun z -> find z Type.Float regenv) zs), p))
-     (fv cont),
-     M.empty)
+        (fv cont),
+        M.empty)
 
 let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレジスタ割り当て (caml2html: regalloc_h) *)
     let regenv = M.add x reg_cl M.empty in

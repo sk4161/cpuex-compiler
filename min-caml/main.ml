@@ -85,7 +85,7 @@ let file f = (* ファイルをコンパイルしてファイルに出力する 
         close_out oc_peephole;
         close_out oc_constRegAlloc;
         close_out oc_regAlloc;
-    with e -> 
+    with e ->
         (close_in ic;
         close_in gc;
         close_in lc;

@@ -290,7 +290,7 @@ and print_id_type_list outchan t d =
     | x :: xs ->
         print_id_type outchan x d;
         print_id_type_list outchan xs d
-and print_tab outchan d = 
+and print_tab outchan d =
     if d = 0 then
         ()
     else
